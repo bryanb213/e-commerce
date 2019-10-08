@@ -27,11 +27,13 @@ export default class DirectoryComponent extends Component {
             {
                 title: 'womens',
                 imgUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+                size: 'large',
                 id: 4
             },
             {
                 title: 'mens',
                 imgUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+                size: 'large',
                 id: 5
             }]
         }
