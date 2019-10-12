@@ -1,9 +1,9 @@
 import React from 'react';
 import './form-button.style.scss';
 
-const FormButton = ({ children, ...otherProps }) => {
+const FormButton = ({ children, isGoogleSignIn, ...otherProps }) => {
     return (
-        <div className="custom-button" {...otherProps}>
+        <div className={`${isGoogleSignIn ? 'google-sign-in': '' } custom-button`} {...otherProps}>
             {children}
         </div>
     );
