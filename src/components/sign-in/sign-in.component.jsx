@@ -4,9 +4,9 @@ import './sign-in.style.scss';
 import FormInput from '../form-input/form-input.component';
 import FormButton from '../form-button/form-button.component';
 
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
-export class SignIn extends Component {
+class SignIn extends Component {
     constructor(props) {
         super(props)
 
@@ -16,17 +16,23 @@ export class SignIn extends Component {
         }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async event => {
         //stops submit entil all fields are typed and clears it after
         event.preventDefault();
-        //makes fields clear
-        this.setState({
-            email: '',
-            password: ''
-        })
+
+        const { email, password } = this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            console.log(this.state);
+            //makes fields clear
+            this.setState({ email: '', password: '' });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    handleChange = (event) => {
+    handleChange = event => {
         //target  is the values
         const { value, name } = event.target;
 
@@ -42,11 +48,11 @@ export class SignIn extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <FormInput
                         type="email"
-                        name="mail"
+                        name="email"
                         value={this.state.email}
                         handleChange={this.handleChange}
                         required
-                        label="Email"
+                        label="email"
                     />
 
                     <FormInput
@@ -55,13 +61,13 @@ export class SignIn extends Component {
                         value={this.state.password}
                         required
                         handleChange={this.handleChange}
-                        label="Password"
+                        label="password"
                     />
 
                     <div className='buttons'>
-                        <FormButton type="submit">Sign In</FormButton> 
+                        <FormButton type="submit">Sign In</FormButton>
                         <FormButton onClick={signInWithGoogle} isGoogleSignIn >
-                            {' '} sign in with Google {' '}
+                            sign in with Google 
                         </FormButton>
                     </div>
                 </form>

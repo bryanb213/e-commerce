@@ -18,6 +18,8 @@ class App extends React.Component {
       currentUser: null
     }
   }
+
+  unsubscribeFromAuth = null;
   
   //will mount compoonent after sign in for firebase
   componentDidMount() {
@@ -35,10 +37,8 @@ class App extends React.Component {
 
           console.log(this.state);
         });
-      } else {
-        this.setState({currentUser: userAuth});
       }
-
+      this.setState({currentUser: userAuth});
     });
   }
   

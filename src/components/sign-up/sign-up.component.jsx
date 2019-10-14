@@ -6,7 +6,7 @@ import FormButton from '../form-button/form-button.component';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
-export class SignUp extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props)
     
@@ -60,7 +60,7 @@ export class SignUp extends Component {
                 <h2 className="title">I do not have an account</h2>
                 <span>Sign-up with your email and password</span>
 
-                <form className="signup-form" onClick={this.handleSubmit}>
+                <form className="signup-form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type = 'text'
                         name = 'displayName'
