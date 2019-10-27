@@ -1,3 +1,4 @@
+//reducer for the user
 const INITIAL_STATE = {
     currentUser: null
 }
