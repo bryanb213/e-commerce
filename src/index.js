@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 //for redux
 import { Provider } from 'react-redux';
 //store
-import { store } from './redux/store'; 
+import { default as store } from './redux/store';
 
 
 ReactDOM.render(
