@@ -14,28 +14,26 @@ import { setCurrentUser } from './redux/user/user.actions';
 
 
 class App extends React.Component {
-  
-
   unsubscribeFromAuth = null;
+  
   
   //will mount compoonent after sign in for firebase
   componentDidMount() {
-    const {setCurrentUser} = this
+    const {setCurrentUser} = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot(snapShot => {
-          this.props.setCurrentUser({
+          setCurrentUser({
               id: snapShot.id,
               ...snapShot.data()
           });
-
-          console.log(this.state);
+          //console.log(this.state);
         });
-      }
-      this.setState({currentUser: userAuth});
+      }  
+      setCurrentUser(userAuth);
     });
   }
   
@@ -60,7 +58,7 @@ class App extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  currentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
 export default connect(null, mapDispatchToProps)(App);
