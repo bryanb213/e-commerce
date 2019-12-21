@@ -7,14 +7,17 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 //for redux
 import { Provider } from 'react-redux';
-//store
-import { default as store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+//store & persister 
+import { store, persistor } from './redux/store';
 
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
+            <PersistGate persistor={persistor} >
             <App />
+            </PersistGate>
         </BrowserRouter>
     </Provider>,
 document.getElementById('root'));
