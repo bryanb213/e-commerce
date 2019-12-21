@@ -2,7 +2,7 @@ const shopData = [
     {
         id: 1,
         title: 'Hats',
-        routeName: 'hats',
+        routeName: 'hats', 
         items: [
             {
                 id: 1,
