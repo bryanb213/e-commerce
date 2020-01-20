@@ -1,0 +1,37 @@
+.contact-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 80vh;
+
+    .left {
+        width: 40%;
+        height: 70vh;
+
+        .heading{
+            text-transform: uppercase;
+        }
+    }
+
+    .right {
+        width: 40%;
+        height: 70vh;
+        
+
+        .heading{
+            text-transform: uppercase;
+        }
+
+        .input{
+            width: 90%;
+            border: none;
+            border-bottom: solid black 1px;
+        }
+
+
+        .contact{
+            margin-left: 35px;
+            margin-top: 10px;
+        }
+    }
+}
